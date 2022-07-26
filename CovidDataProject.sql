@@ -3,9 +3,9 @@ From PortfolioProject..CovidDeaths
 Where continent is not null
 Order by 3, 4
 
---SELECT *
---From PortfolioProject..CovidVaccinations
---Order by 3, 4
+SELECT *
+From PortfolioProject..CovidVaccinations
+Order by 3, 4
 
 --Select Data that we are going to be using 
 
@@ -21,6 +21,13 @@ From PortfolioProject..CovidDeaths
 --Where location like '%canada%'
 Where continent is not null
 Order by 1, 2
+
+--TOTAL CASES VS TOTAL DEATHS - ALTOGETHER(SUM)
+
+Select SUM(new_cases) as Total_Cases, SUM(cast(new_deaths as int)) as Total_Deaths, SUM(cast(new_deaths as int))/SUM(New_Cases)*100 as DeathPercentage 
+From PortfolioProject..CovidDeaths
+Where Continent is not null
+Order by 1,2
 
 --Looking at the Total Cases vs Population
 --Shows what percentage of population got Covid
@@ -64,6 +71,27 @@ From PortfolioProject..CovidDeaths
 Where continent is not null
 Group by Location
 Order by TotalDeathCount desc
+
+--TOTAL DEATH COUNT GROUPED BY LOCATION (CONTINENT)
+Select location, SUM(cast(new_deaths as int)) as TotalDeathCount
+From PortfolioProject..CovidDeaths
+Where continent is null
+and location not in ('World', 'European Union', 'International')
+Group by location
+Order by TotalDeathCount
+
+--PERCENTAGE OF POPULATION INFECTED GROUPED BY LOCATION
+Select Location, Population, MAX(total_cases) as HighestInfectionCount, Max((total_cases/population))*100 as PercentPopulationInfected
+From PortfolioProject..CovidDeaths
+Group by Location, Population
+Order by PercentPopulationInfected desc
+
+--PERCENTAGE OF POPULATION INFECTED GROUPED BY LOCATION & DATE
+
+Select Location, Population, date, MAX(total_cases) as HighestInfectionCount, Max((total_cases/population))*100 as PercentPopulationInfected
+From PortfolioProject..CovidDeaths
+Group by Location, Population, date
+Order by PercentPopulationInfected desc
 
 --Global Numbers
 

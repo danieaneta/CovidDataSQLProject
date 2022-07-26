@@ -3,6 +3,9 @@ READ ME:
 
 Project showcasing my knowledge with MySQL. This project shows
 and incorporates Covid Data from https://ourworldindata.org/
+Tableau: https://public.tableau.com/views/CovidDataProject2020-2021/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link
+
+
 
 Things covered:
 -Taking .csv and exporting as .xlsx
@@ -19,4 +22,7 @@ Things covered:
 -Joining tables
 -CTE
 -Rolling data
-Creating a veiw
+-Creating a veiw
+-Extracting Data from Microsoft SQL Server Management Studio to Micrsoft Excel 
+-Importing data to Tableau 
+-Graphics creation with extracted data onto Tableau
